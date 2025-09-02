@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+
+    <script>
+        // Initialize Firebase if not already initialized
+        if (typeof firebase === 'undefined' || !firebase.apps.length) {
+            firebase.initializeApp({
+                apiKey: "AIzaSyBT6waqal-sHQLZIvQa-sK5fduXua7L7vg",
+                authDomain: "unblockdev-75c1b.firebaseapp.com",
+                projectId: "unblockdev-75c1b", 
+                storageBucket: "unblockdev-75c1b.firebasestorage.app",
+                messagingSenderId: "238555417450",
+                appId: "1:238555417450:web:61a3ddc3eafb900eb8f313",
+                databaseURL: "https://unblockdev-75c1b-default-rtdb.asia-southeast1.firebasedatabase.app/"
+            });
+        }
+    </script>
+    
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="index, follow">
+    <meta name="google-adsense-account" content="ca-pub-4591656490809347">
+    
+    <meta name="keywords" content="Free unblocked games, Play unblocked games, School games, Online games, Browser games">
+    <meta name="description" content="Browse all unblocked games on UnblockDev - Free online games playable anytime, anywhere!">
+    
+    <title>All Games - UnblockDev - Free Games Unlocked</title>
+    
+    <!-- Open Graph (For SEO & Social Media Sharing) -->
+    <meta property="og:url" content="https://www.unblockdev.com/all-games">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="UnblockDev">
+    <meta property="og:title" content="All Games - UnblockDev - Free Games Unlocked">
+    <meta property="og:description" content="Browse all unblocked games on UnblockDev - Free online games playable anytime, anywhere!">
+    <meta property="og:image" content="https://unblockdev.com/img/ipodfavicon.png">
+    <meta property="og:locale" content="en_US" />
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.unblockdev.com/all-games" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Google Verification & Security -->
+    <meta name="google-site-verification" content="XZl64GJFi9Ga4ctg3f_tQwNCwTmpFj70GKCxNVgqOk4" />
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+    
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    
+    <!-- Google Fonts-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Poppins:wght@100;200;300;400;500;600;700&amp;display=swap"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Archivo+Black&amp;family=Poppins:wght@100;200;300;400;500;600;700&amp;display=swap">
+    </noscript>
+    
+    <!-- Overlay Scrollbars-->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/css/OverlayScrollbars.css"
+        as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/overlayscrollbars/1.13.1/css/OverlayScrollbars.css">
+    </noscript>
+    
+    <!-- Bootstrap -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
+    </noscript>
+    
+    <!-- Custom CSS -->
+    <link rel="preload" href="../index.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="../index.css">
+    </noscript>
+    
+    <style>
+        .search-results {
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        
+        .search-results::-webkit-scrollbar {
+            display: none;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Nunito, Arial, sans-serif !important;
+            font-weight: 900 !important;
+        }
+        
+        #gameSearch {
+            box-shadow: 0px 0px;
+            font-weight: 500;
+            fill: #AAADBE;
+            border-radius: 30px;
+            padding-left: 15px;
+            height: 40px;
+            background-color: #353641;
+            border-color: transparent;
+            font-size: 16px;
+            color: #AAADBE;
+        }
+
+        body {
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .search-item:hover {
+            background: rgba(128, 128, 128, 0.5);
+        }
+        
+        #loader {
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            position: fixed;
+            z-index: 1031;
+            top: 0;
+            left: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lds-dual-ring {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+        }
+        
+        .lds-dual-ring:after {
+            content: " ";
+            display: block;
+            width: 64px;
+            height: 64px;
+            margin: 8px;
+            border-radius: 50%;
+            border: 6px solid #fff;
+            border-color: #fff transparent #fff transparent;
+            animation: lds-dual-ring 1.2s linear infinite;
+        }
+
+        /* Games grid styles */
+        .page-header {
+            text-align: center;
+            padding: 120px 20px 40px;
+        }
+        
+        .page-title {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .page-description {
+            color: #999;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .games-grid-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px 40px;
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 24px;
+            justify-content: center;
+        }
+        
+        .grid-game {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            background-size: cover;
+            background-position: center;
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
+        .grid-game::after {
+            background: linear-gradient(#0000 25%,#0000004d);
+            border-radius: 16px;
+            bottom: 0;
+            contain: strict;
+            content: "";
+            height: 100%;
+            left: 0;
+            opacity: 0;
+            position: absolute;
+            transition: opacity .3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            will-change: opacity,box-shadow;
+            z-index: 1
+        }
+        
+        .grid-game:hover::after {
+            opacity: 1;
+        }
+        
+        .grid-game:hover {
+            transform: scale(1.04);
+        }
+        
+        .grid-game:active {
+            transform: scale(0.96);
+        }
+        
+        .grid-game-name {
+            position: absolute;
+            bottom: 0px;
+            width: 100%;
+            text-align: center;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding: 8px;
+            transition: bottom 0.3s ease-out, opacity 0.3s ease-out;
+            opacity: 0;
+            font-family: 'Poppins', sans-serif;
+            z-index: 2;
+        }
+        
+        .grid-game:hover .grid-game-name {
+            bottom: 8px;
+            opacity: 1;
+        }
+        
+        /* Filter options */
+        .filter-options {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .filter-button {
+            background-color: #353641;
+            color: #fff;
+            border: none;
+            border-radius: 20px;
+            padding: 8px 16px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .filter-button.active {
+            background-color: #0a84ff;
+        }
+        
+        .filter-button:hover {
+            background-color: #4a4c5c;
+        }
+
+        @keyframes lds-dual-ring {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 991px) {
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+                gap: 20px;
+            }
+            
+            .page-title {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+                gap: 16px;
+            }
+            
+            .page-header {
+                padding: 100px 20px 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .games-grid {
+                grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+                gap: 12px;
+            }
+            
+            .grid-game-name {
+                font-size: 14px;
+            }
+            
+            .page-title {
+                font-size: 24px;
+            }
+            
+            .page-description {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body style="padding: 0px;">
+    <!-- Loader -->
+    <div id="loader">
+        <div class="lds-dual-ring"></div>
+    </div>
+    
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="top">
+        <div style="display:flex; flex-direction:row; align-items:center; padding-left: 15px;">
+            <a href="https://www.unblockdev.com/">
+                <img src="/img/home_button_3.svg" alt="Home" height="40" width="40">
+            </a>
+            <a href="#top" onclick='nav("top")' style="margin-left: 8px;">
+                <img src="/img/logo_button_3.svg" alt="Icon" height="40">
+            </a>
+        </div>
+        <div class="search-container" style="position: relative; margin: 0 auto; width: 30%;">
+            <div style="position: absolute; left: 15px; top: 50%; transform: translateY(-50%); z-index: 10; display: flex; align-items: center; justify-content: center; pointer-events: none;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="#6c757d" style="width: 16px; height: 16px;">
+                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"></path>
+                </svg>
+            </div>
+            <input type="text" id="gameSearch" class="form-control" placeholder="Search" onkeyup="filterGames()" autocomplete="off" style="padding-left: 40px;">
+            <div id="searchResults" class="search-results" style="position: absolute; margin-top: 20px; width: 100%; background: #1c1c23; display: none; border-radius: 10px; max-height: 305px; overflow-y: auto; z-index: 1000; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);">
+            </div>
+        </div>
+        
+        <div style="display: flex; flex-direction: row; justify-content: flex-end; padding-right: 20px; padding-left: 8px; align-items: center;">
+            <a href="#" id="navbar-random-btn" style="margin-right: 8px;">
+                <img src="/img/random_game_3.svg" alt="Random Game" height="40" width="40">
+            </a>
+            <a href="#popular" style="margin-right: 8px;">
+                <img src="/img/popular_game_3.svg" alt="Popular Games" height="40" width="40">
+            </a>
+            <a href="#Request" onclick='nav("Request")'>
+                <img src="/img/request_button_3.svg" alt="Request Games" width="80" height="40">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="page-header">
+        <h1 id="section-title" class="page-title">All Games</h1>
+        <p id="section-description" class="page-description">Browse our complete collection of unblocked games</p>
+        
+        <!-- Filter options will be added here dynamically -->
+        <div class="filter-options">
+            <button class="filter-button active" data-category="all">All Games</button>
+            <button class="filter-button" data-category="popular">Popular</button>
+            <button class="filter-button" data-category="continue">Continue Playing</button>
+            <button class="filter-button" data-category="recommended">Recommended</button>
+            <!-- Other buttons will be added dynamically -->
+        </div>
+    </header>
+
+    <!-- Games Grid -->
+    <div class="games-grid-container">
+        <div id="games-grid" class="games-grid">
+            <!-- Games will be loaded here dynamically -->
+        </div>
+    </div>
+
+    <!-- Navigation function -->
+    <script>
+        function nav(section) {
+            if (section === 'top') {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            } else if (section === 'Play') {
+                setFilter('popular');
+                document.querySelector('.filter-button[data-category="popular"]').classList.add('active');
+            } else if (section === 'Request') {
+                alert('Game request feature coming soon!');
+            }
+        }
+        
+        // Hide loader when page is fully loaded
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loader').style.display = 'none';
+            }, 500);
+        });
+        
+        // Random game functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const randomBtn = document.getElementById('navbar-random-btn');
+            if (randomBtn) {
+                randomBtn.addEventListener('click', function() {
+                    if (window.gamesList && window.gamesList.length > 0) {
+                        const randomIndex = Math.floor(Math.random() * window.gamesList.length);
+                        const randomGame = window.gamesList[randomIndex];
+                        
+                        if (randomGame) {
+                            if (typeof trackGame === 'function') {
+                                trackGame(randomGame.title, randomGame.image, randomGame.url);
+                            }
+                            window.location.href = randomGame.url;
+                        }
+                    }
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+        // Find all "View All" links
+        const viewAllLinks = document.querySelectorAll('.view-all');
+        
+        viewAllLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                // Get the category from the parent section
+                const sectionHeader = this.closest('.category-header');
+                if (!sectionHeader) return;
+                
+                const categoryTitle = sectionHeader.querySelector('h2')?.textContent.trim().toLowerCase();
+                if (!categoryTitle) return;
+                
+                // Determine appropriate hash based on category title
+                let hash = '';
+                
+                if (categoryTitle.includes('continue playing')) {
+                    hash = '#continue';
+                } else if (categoryTitle.includes('popular games')) {
+                    hash = '#popular';
+                } else if (categoryTitle.includes('recommended for you')) {
+                    hash = '#recommended';
+                } else if (categoryTitle.includes('arcade games')) {
+                    hash = '#arcade';
+                } else if (categoryTitle.includes('casual games')) {
+                    hash = '#casual';
+                } else if (categoryTitle.includes('shooting games')) {
+                    hash = '#shooting';
+                } else if (categoryTitle.includes('driving games')) {
+                    hash = '#driving';
+                } else if (categoryTitle.includes('puzzle games')) {
+                    hash = '#puzzle';
+                } else if (categoryTitle.includes('action games')) {
+                    hash = '#action';
+                } else if (categoryTitle.includes('clicker games')) {
+                    hash = '#clicker';
+                } else if (categoryTitle.includes('sports games')) {
+                    hash = '#sports';
+                } else if (categoryTitle.includes('io games')) {
+                    hash = '#io';
+                } else if (categoryTitle.includes('platform games')) {
+                    hash = '#platform';
+                } else if (categoryTitle.includes('battle games')) {
+                    hash = '#battle';
+                } else if (categoryTitle.includes('all games')) {
+                    hash = '';
+                }
+                
+                // Navigate to the view-all page with appropriate hash
+                window.location.href = `/view/view-all.html${hash}`;
+                e.preventDefault();
+            });
+        });
+        
+        // Function to build game catalog from current page
+        function buildGameCatalog() {
+            // This is a fallback function to build a minimal catalog
+            // It just serves as a backup in case dynamic loading fails
+            const catalog = [];
+            
+            // Get all game buttons across all categories
+            const gameButtons = document.querySelectorAll('.round-button');
+            
+            // Process each button
+            gameButtons.forEach(button => {
+                const parentElement = button.closest('a');
+                if (!parentElement) return;
+                
+                const gameUrl = parentElement.getAttribute('href');
+                const backgroundImage = button.style.backgroundImage;
+                const imageUrl = backgroundImage.replace('url("', '').replace('")', '').replace(/['\\]/g, '');
+                const gameNameEl = button.querySelector('.game-name');
+                const gameName = gameNameEl ? gameNameEl.textContent.trim() : '';
+                
+                if (!gameName || !gameUrl) return;
+                
+                // Find parent category section
+                let categorySection = button.closest('.game-row');
+                let categoryName = 'uncategorized';
+                
+                if (categorySection) {
+                    const categoryHeader = categorySection.querySelector('.category-header h2');
+                    if (categoryHeader) {
+                        const headerText = categoryHeader.textContent.trim().toLowerCase();
+                        
+                        if (headerText.includes('continue playing')) {
+                            categoryName = 'continue';
+                        } else if (headerText.includes('popular games')) {
+                            categoryName = 'popular';
+                        } else if (headerText.includes('recommended for you')) {
+                            categoryName = 'recommended';
+                        } else if (headerText.includes('arcade games')) {
+                            categoryName = 'arcade';
+                        } else if (headerText.includes('casual games')) {
+                            categoryName = 'casual';
+                        } else if (headerText.includes('shooting games')) {
+                            categoryName = 'shooting';
+                        } else if (headerText.includes('driving games')) {
+                            categoryName = 'driving';
+                        } else if (headerText.includes('puzzle games')) {
+                            categoryName = 'puzzle';
+                        } else if (headerText.includes('action games')) {
+                            categoryName = 'action';
+                        } else if (headerText.includes('clicker games')) {
+                            categoryName = 'clicker';
+                        } else if (headerText.includes('sports games')) {
+                            categoryName = 'sports';
+                        } else if (headerText.includes('io games')) {
+                            categoryName = 'io';
+                        } else if (headerText.includes('platform games')) {
+                            categoryName = 'platform';
+                        } else if (headerText.includes('battle games')) {
+                            categoryName = 'battle';
+                        } else if (headerText.includes('all games')) {
+                            categoryName = 'all';
+                        }
+                    }
+                }
+                
+                // Find if game already exists in catalog
+                const existingGameIndex = catalog.findIndex(g => g.title === gameName);
+                
+                if (existingGameIndex !== -1) {
+                    // Add category if not already included
+                    if (!catalog[existingGameIndex].categories.includes(categoryName)) {
+                        catalog[existingGameIndex].categories.push(categoryName);
+                    }
+                } else {
+                    // Add new game to catalog
+                    catalog.push({
+                        title: gameName,
+                        url: gameUrl,
+                        image: imageUrl,
+                        categories: [categoryName]
+                    });
+                }
+            });
+            
+            // Store catalog in localStorage for view-all page
+            if (catalog.length > 0) {
+                localStorage.setItem('gameCatalog', JSON.stringify(catalog));
+                console.log(`Stored ${catalog.length} games in catalog`);
+            }
+        }
+        
+        // Build game catalog on page load
+        buildGameCatalog();
+    });
+    </script>
+    
+    <!-- Load the dynamic view-loader script -->
+    <script src="../view-loader.js"></script>
+</body>
+</html>

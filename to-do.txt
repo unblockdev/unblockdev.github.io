@@ -1,0 +1,9 @@
+1) Redesign Navbar and All Functionality ✅
+2) Redo search box mechanics ✅
+3) Make one games list to use ✅
+3) New games section
+4) Shrink down hero slider
+5) Redo Footer
+6) Add more sections
+7) Redo Update Game page
+8) Add games games games (1000)
