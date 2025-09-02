@@ -1,5 +1,2 @@
 User-agent: *
-Disallow: /request.html
-Allow: /
-
-Sitemap: https://www.unblockdev.com/sitemap.xml
+Disallow: /
